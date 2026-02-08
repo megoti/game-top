@@ -1,0 +1,42 @@
+[
+  {
+    "id": "game1",
+    "title": "Neon Racer",
+    "icon": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80",
+    "url": "#",
+    "description": "A high-speed racing game.",
+    "isNew": true
+  },
+  {
+    "id": "game2",
+    "title": "Space Defender",
+    "icon": "https://images.unsplash.com/photo-1614728853913-1e2203aca52b?auto=format&fit=crop&w=400&q=80",
+    "url": "#",
+    "description": "Defend your base from alien invaders.",
+    "isNew": false
+  },
+  {
+    "id": "game3",
+    "title": "Puzzle Quest",
+    "icon": "https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?auto=format&fit=crop&w=400&q=80",
+    "url": "#",
+    "description": "Solve challenging puzzles.",
+    "isNew": false
+  },
+  {
+    "id": "game4",
+    "title": "Magic Forest",
+    "icon": "https://images.unsplash.com/photo-1448375240586-dfd8d3f5d885?auto=format&fit=crop&w=400&q=80",
+    "url": "#",
+    "description": "Explore a magical world.",
+    "isNew": true
+  },
+  {
+    "id": "game5",
+    "title": "Cyber City",
+    "icon": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=400&q=80",
+    "url": "#",
+    "description": "Survive in the city of the future.",
+    "isNew": false
+  }
+]

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTop - My Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Outfit:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <!-- JSZip for Zip Handling (needed for Playing) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Firebase SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header>
+        <div class="header-limit">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <span class="logo-icon" style="font-size: 2.5rem;">🐢</span>
+                <div class="logo">GameTop</div>
+                <span class="logo-icon" style="font-size: 2.5rem;">👑</span>
+            </a>
+        </div>
+        <div class="header-controls">
+            <select id="sortSelect">
+                <option value="popularity">Popular View</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+            <input type="text" id="searchBar" placeholder="Search games...">
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li class="active" id="btn-all">
+                        <span class="icon">🎮</span> All Games
+                    </li>
+                    <li id="btn-favorites">
+                        <span class="icon">❤️</span> Favorites
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="genre-section">
+                <h3>Genres</h3>
+                <div class="genre-list" id="genreList">
+                    <label class="genre-item"><input type="checkbox" value="3D"> 3D</label>
+                    <label class="genre-item"><input type="checkbox" value="2D"> 2D</label>
+                    <label class="genre-item"><input type="checkbox" value="Shooting"> Shooting</label>
+                    <label class="genre-item"><input type="checkbox" value="Puzzle"> Puzzle</label>
+                    <label class="genre-item"><input type="checkbox" value="RPG"> RPG</label>
+                    <label class="genre-item"><input type="checkbox" value="Story"> Story</label>
+                    <label class="genre-item"><input type="checkbox" value="Action"> Action</label>
+                </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <a href="#" id="myGamesBtn" class="post-btn"
+                style="background: white; color: var(--accent-color); border: 2px solid var(--accent-color); margin-bottom: 10px;">
+                <span class="icon">🎮</span> MY Games
+            </a>
+
+            <a href="post.html" class="post-btn">
+                <span class="icon">＋</span> Post Data
+            </a>
+        </aside>
+
+        <main>
+            <div class="games-grid" id="gamesContainer">
+                <!-- Game cards will be injected here by script.js -->
+            </div>
+        </main>
+    </div>
+
+    <script src="games.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
