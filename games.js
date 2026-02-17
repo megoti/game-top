@@ -26,5 +26,18 @@ const gamesData = [
             "2D",
             "Action"
         ]
+    },
+    {
+        "id": "go_1771325333554",
+        "title": "麺GO! ～ラーメンの妖精引っこ抜きゲーム～",
+        "icon": "games/go_1771325333554/icon.png",
+        "url": "https://men-go-hozu.netlify.app/",
+        "description": "麺をつまんで口に運ぼう！",
+        "isNew": true,
+        "views": 0,
+        "date": "2026-02-17",
+        "genres": [
+            "2D"
+        ]
     }
 ];
