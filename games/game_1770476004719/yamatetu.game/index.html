@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餌の気持ち - Bail Survival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="ui-layer">
+            <div id="start-screen" class="screen active">
+                <h1>餌の<span class="accent">気持ち</span></h1>
+                <p>Arrow Keys to Dash</p>
+                <button id="start-btn">DIVE IN</button>
+            </div>
+
+            <div id="game-over-screen" class="screen hidden">
+                <h1>YOU DIED</h1>
+                <p>Survival Time: <span id="score">0</span>s</p>
+                <button id="restart-btn">TRY AGAIN</button>
+            </div>
+
+            <div id="hud" class="hidden">
+                <div class="timer">TIME: <span id="time-display">0</span>s</div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>

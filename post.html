@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Game - GameTop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Outfit:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+            <span class="logo-icon" style="font-size: 2.5rem;">🐢</span>
+            <div class="logo">GameTop</div>
+            <span class="logo-icon" style="font-size: 2.5rem;">👑</span>
+        </a>
+    </header>
+
+    <main class="post-container">
+        <div class="card-bg">
+            <h1>Post Game (Admin)</h1>
+
+            <!-- GitHub Settings -->
+            <div id="github-settings-section"
+                style="margin-bottom: 2rem; padding: 1.5rem; background: #e3f2fd; border-radius: 16px;">
+                <h3 style="margin-top: 0; color: #1976d2;">GitHub Settings</h3>
+                <p style="color: #546e7a; margin-bottom: 1rem;">Enter your GitHub repository information to enable
+                    automatic uploads.</p>
+
+                <div style="display: grid; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <label style="display: block; font-weight: bold; margin-bottom: 0.3rem; color: #424242;">GitHub
+                            Username</label>
+                        <input type="text" id="githubOwner" placeholder="your-username"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #bbdefb; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; font-weight: bold; margin-bottom: 0.3rem; color: #424242;">Repository
+                            Name</label>
+                        <input type="text" id="githubRepo" placeholder="gametop"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #bbdefb; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; font-weight: bold; margin-bottom: 0.3rem; color: #424242;">Personal
+                            Access Token</label>
+                        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 2px solid #bbdefb; font-size: 1rem;">
+                        <small style="color: #546e7a;">Need a token? <a href="https://github.com/settings/tokens/new"
+                                target="_blank" style="color: #2196f3;">Create one here</a> (select 'repo'
+                            scope)</small>
+                    </div>
+                </div>
+
+                <button type="button" id="saveGitHubSettings" class="submit-btn"
+                    style="background: #2196f3; width: auto; padding: 0.8rem 2rem;">💾 Save Settings</button>
+                <p id="githubStatus" style="font-weight: bold; margin-top: 10px; color: #2e7d32;"></p>
+            </div>
+
+            <!-- Form -->
+            <form id="postGameForm" style="filter: grayscale(1); opacity: 0.6; pointer-events: none; transition: 0.3s;">
+                <input type="hidden" id="editGameId">
+
+                <!-- 1. Basics -->
+                <div class="form-group">
+                    <label>Game Title</label>
+                    <input type="text" id="gameTitle" placeholder="Game Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="gameDesc" placeholder="Simple description..." required></textarea>
+                </div>
+
+                <!-- 2. URL & Icon -->
+                <div class="form-group">
+                    <label>Game Link (URL)</label>
+                    <input type="url" id="gameUrlInput" placeholder="https://example.com/my-game" required
+                        style="display: block; width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #bbdefb; font-size: 1rem;">
+                    <small>Paste the link where the game is hosted (e.g. UnityRoom, itch.io)</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Icon Image</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="iconFileInput" accept="image/*"
+                            style="display: block; width: 100%; padding: 10px; background: white; border-radius: 10px; border: 2px solid #bbdefb;">
+                    </div>
+                </div>
+
+                <!-- 3. Genre -->
+                <div class="form-group">
+                    <label>Genres</label>
+                    <div class="genre-checkboxes">
+                        <label><input type="checkbox" value="3D"> 3D</label>
+                        <label><input type="checkbox" value="2D"> 2D</label>
+                        <label><input type="checkbox" value="Shooting"> Shooting</label>
+                        <label><input type="checkbox" value="Puzzle"> Puzzle</label>
+                        <label><input type="checkbox" value="RPG"> RPG</label>
+                        <label><input type="checkbox" value="Story"> Story</label>
+                        <label><input type="checkbox" value="Action"> Action</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Post Game</button>
+            </form>
+
+            <a href="index.html" class="back-btn"
+                style="display: block; width: 100%; text-align: center; margin-top: 1rem;">Back to Home</a>
+        </div>
+    </main>
+
+    <script src="games.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
