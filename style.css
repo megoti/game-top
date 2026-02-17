@@ -289,6 +289,153 @@ main {
     }
 }
 
+/* ---- Dedicated Play Page ---- */
+.play-page-body {
+    overflow: hidden;
+    /* Avoid double scrollbars */
+    height: 100vh;
+}
+
+.play-header {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    background: var(--accent-color);
+    transform: translateX(-5px);
+}
+
+.play-game-title {
+    font-size: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    font-weight: 700;
+}
+
+.play-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    /* Adjust for header */
+}
+
+.game-wrapper {
+    flex: 1;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#playIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+    /* Initially hidden until load */
+}
+
+.play-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--accent-light);
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+.game-info-bar {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-meta h1 {
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    color: white;
+    text-align: left;
+}
+
+.game-meta p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.action-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.circle-btn {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 /* Game Card */
 .game-card {
     background: var(--card-bg);
@@ -385,6 +532,7 @@ main {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2;
     overflow: hidden;
     margin-bottom: 0.5rem;
 }

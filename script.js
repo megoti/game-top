@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ---- Page Detection ----
     const isPostPage = !!document.getElementById('postGameForm');
+    const isPlayPage = !!document.getElementById('playIframe');
 
     // ---- Shared Data Logic ----
     let favorites = JSON.parse(localStorage.getItem('gameFavorites')) || [];
@@ -12,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Post Page Logic ----
     if (isPostPage) {
         setupPostPage();
+        return;
+    }
+
+    // ---- Play Page Logic ----
+    if (isPlayPage) {
+        setupPlayPage();
         return;
     }
 
@@ -168,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } else {
                 // Play Action
-                clickAction = `window.open('${game.url || '#'}', '_blank')`;
+                clickAction = `location.href='play.html?id=${game.id}'`;
             }
 
             const isNew = game.isNew ? '<span class="new-badge">NEW</span>' : '';
@@ -199,6 +206,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             }
         });
+    }
+
+    // ---- Play Page Implementation ----
+    function setupPlayPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const gameId = urlParams.get('id');
+        const playIframe = document.getElementById('playIframe');
+        const playLoading = document.getElementById('playLoading');
+        const playGameTitle = document.getElementById('playGameTitle');
+        const gameInfoTitle = document.getElementById('gameInfoTitle');
+        const gameInfoDesc = document.getElementById('gameInfoDesc');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+        if (!gameId) {
+            alert('Game ID not found!');
+            location.href = 'index.html';
+            return;
+        }
+
+        // We need gamesData which is globally available from games.js
+        if (typeof gamesData === 'undefined') {
+            alert('Game data not loaded!');
+            return;
+        }
+
+        const game = gamesData.find(g => g.id === gameId);
+        if (!game) {
+            alert('Game not found!');
+            location.href = 'index.html';
+            return;
+        }
+
+        // Update UI
+        playGameTitle.textContent = game.title;
+        gameInfoTitle.textContent = game.title;
+        gameInfoDesc.textContent = game.description || 'No description available.';
+        document.title = `${game.title} - GameTop`;
+
+        // Load Game
+        playIframe.src = game.url;
+        playIframe.onload = () => {
+            playLoading.style.display = 'none';
+            playIframe.style.display = 'block';
+        };
+
+        // Fullscreen Logic
+        if (fullscreenBtn) {
+            fullscreenBtn.onclick = () => {
+                if (playIframe.requestFullscreen) {
+                    playIframe.requestFullscreen();
+                } else if (playIframe.webkitRequestFullscreen) { /* Safari */
+                    playIframe.webkitRequestFullscreen();
+                } else if (playIframe.msRequestFullscreen) { /* IE11 */
+                    playIframe.msRequestFullscreen();
+                }
+            };
+        }
     }
 
     // ==========================================
